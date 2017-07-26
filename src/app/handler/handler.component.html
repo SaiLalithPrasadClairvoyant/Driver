@@ -1,0 +1,78 @@
+<p>
+  This is handler !
+</p>
+<button (click)="loadPosts()" class="btn btn-primary" popover="Load Data!" triggers="mouseenter:mouseleave">Load Data</button>
+<button (click)="staticModal.show()" class="btn btn-default" popover="Post something new !" triggers="mouseenter:mouseleave">Post One</button>
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">POST</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre>
+           <form>
+          <input type="number" name="id" [(ngModel)]="id" placeholder="id" autocomplete="off" required/>
+          <input type="text" name="title" [(ngModel)]="title" placeholder="Title" autocomplete="off" required/>
+          <input type="text" name="body" [(ngModel)]="body" placeholder="Body" autocomplete="off" required/>
+          <button (click)="createPost();staticModal.hide();successModal.show();" class="btn btn-default">Post One</button>
+        </form>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-bordered">
+    <tr id="mattertable" *ngFor="let data of getdata | paginate: {itemsPerPage: 5,currentPage: page,id: '1'};let index=index">
+      <td>
+        <p *ngIf="index !== editindex">{{data.id}}</p>
+        <input id="eid" type="number" *ngIf="index == editindex" [(ngModel)]="getdata[index].id" />
+      </td>
+      <td>
+        <p *ngIf="index !== editindex">{{data.title}}</p>
+        <textarea id="etitle" rows="5" cols="60" *ngIf="index == editindex" [(ngModel)]="getdata[index].title"></textarea>
+      </td>
+      <td>
+        <p *ngIf="index !== editindex">{{data.body}}</p>
+        <textarea id="ebody" rows="5" cols="60" *ngIf="index == editindex" [(ngModel)]="getdata[index].body"></textarea>
+      </td>
+      <td>
+        <span class="table-up glyphicon glyphicon-ok" (click)="updatePost(index);" popover="update this post" triggers="mouseenter:mouseleave"></span>
+      </td>
+      <td>
+        <span class="table-up glyphicon glyphicon-arrow-up" (click)="updated(index);" popover="update this post" triggers="mouseenter:mouseleave"></span>
+      </td>
+      <td>
+        <span class="table-remove glyphicon glyphicon-remove" (click)="deletePost(index)" popover="delete this posts" triggers="mouseenter:mouseleave"></span>
+      </td>
+    </tr>
+  </table>
+  <pagination-controls  (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
+  </pagination-controls>
+</div>
+<div id="dis">
+  <disqus [identifier]="angularautopsy"></disqus>
+</div>
+<div bsModal #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Posted!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="successModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          New Post added !
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

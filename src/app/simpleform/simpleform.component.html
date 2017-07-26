@@ -1,0 +1,31 @@
+<p>
+  simpleform works!
+</p>
+<form id="stupidform">
+  please enter the name:<input type="text" id="name" />
+</form>
+{{peru}} count: {{count}}
+<button (click)="increment()">increment</button>
+<button (click)="peruspy()">change</button>
+<div class="jumbotron" style="margin-left:50px;margin-right:50px;">
+  <div class="form-group" style="margin-left:50px;margin-right:150px;">
+    <label for="email">Email:</label>
+    <input type="email" required class="form-control" [(ngModel)]="email" placeholder="Enter email" x>
+  </div>
+  <div class="form-group" style="margin-left:50px;margin-right:150px;">
+    <label for="pwd">Password:</label>
+    <input type="password" required class="form-control" [(ngModel)]="password" placeholder="Enter password">
+  </div>
+  <div style="margin-left:50px;margin-right:50px;">
+    <button type="submit" class="btn btn-default" (click)="subclick()">Submit</button>
+  </div>
+</div>
+<div *ngIf='authenticated' class="alert alert-success" style="margin-left:50px;margin-right:150px;">
+  <strong>Success</strong>
+</div>
+<div *ngIf='showerror' class="alert alert-danger" style="margin-left:50px;margin-right:150px;">
+  <strong> Email and Password combination do not match </strong>
+</div>
+<div *ngIf='retard' class="alert alert-warning" style="margin-left:50px;margin-right:200px;">
+  <strong> You left email and password fields empty .. You must be RETARD !!</strong>
+</div>
