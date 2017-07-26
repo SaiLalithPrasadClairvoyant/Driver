@@ -20,9 +20,14 @@
     <button type="submit" class="btn btn-default" (click)="subclick()">Submit</button>
   </div>
 </div>
-<div *ngIf='authenticated' class="alert alert-success" style="margin-left:50px;margin-right:150px;">
+<div *ngIf='authenticated;else boos' class="alert alert-success" style="margin-left:50px;margin-right:150px;">
   <strong>Success</strong>
 </div>
+<ng-template #boos>
+  <div  class="alert alert-danger" style="margin-left:50px;margin-right:150px;">
+  <strong>Failed</strong>
+</div>
+</ng-template>
 <div *ngIf='showerror' class="alert alert-danger" style="margin-left:50px;margin-right:150px;">
   <strong> Email and Password combination do not match </strong>
 </div>
