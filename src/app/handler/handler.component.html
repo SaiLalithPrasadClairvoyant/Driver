@@ -34,7 +34,7 @@
         <input id="eid" type="number" *ngIf="index == editindex" [(ngModel)]="getdata[index].id" />
       </td>
       <td>
-        <p *ngIf="index !== editindex">{{data.title}}</p>
+        <p *ngIf="index !== editindex" [ngStyle]="{'color': getColor(index)}">{{data.title}}</p>
         <textarea id="etitle" rows="5" cols="60" *ngIf="index == editindex" [(ngModel)]="getdata[index].title"></textarea>
       </td>
       <td>
@@ -52,7 +52,7 @@
       </td>
     </tr>
   </table>
-  <pagination-controls  (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
+  <pagination-controls (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
   </pagination-controls>
 </div>
 <div id="dis">

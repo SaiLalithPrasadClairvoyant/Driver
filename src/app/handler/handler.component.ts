@@ -20,6 +20,14 @@ export class HandlerComponent implements OnInit {
   matter;
   constructor(private matterservice: MatterService) {
   }
+  getColor(index): String {
+    if (index % 2 === 0) {
+      return 'blue';
+    } else {
+      return 'red';
+    }
+  }
+
   loadPosts() {
     this.matterservice.getPosts().subscribe(
       (data) => {

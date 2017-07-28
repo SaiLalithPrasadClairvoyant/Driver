@@ -6,15 +6,17 @@ import { StudentComponent } from './student/student.component';
 import { SimpleformComponent } from './simpleform/simpleform.component';
 import { HttpModule } from '@angular/http';
 import { HandlerComponent } from './handler/handler.component';
+import { HomeComponent } from './home/home.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { DisqusModule } from 'ngx-disqus';
 import { PopoverModule } from 'ngx-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'handler', component: HandlerComponent },
   { path: 'simpleForm', component: SimpleformComponent },
-  { path: 'student', component: StudentComponent},
+  { path: 'student', component: StudentComponent },
 ];
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ const appRoutes: Routes = [
     StudentComponent,
     SimpleformComponent,
     HandlerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

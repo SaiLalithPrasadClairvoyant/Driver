@@ -18,7 +18,5 @@ export class AppComponent {
   constructor(private matterservice: MatterService) {
   }
   ngOnInit(): void {
-    this.matterservice.getPosts()
-      .subscribe(matpro => this.matter = matpro);
   }
 }

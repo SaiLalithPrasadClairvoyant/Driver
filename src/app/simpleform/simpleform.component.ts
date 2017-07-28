@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './simpleform.component.html',
   styleUrls: ['./simpleform.component.css']
 })
+
 export class SimpleformComponent implements OnInit {
   peru = 'LalithPrasad';
   count = 0;

@@ -8,5 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class StudentComponent {
   bro = 'Bro';
   name = '';
+  ee = '';
   constructor() { }
 }

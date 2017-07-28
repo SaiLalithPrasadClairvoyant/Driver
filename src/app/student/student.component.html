@@ -1,5 +1,9 @@
 <div ng-app="">
  <input type="text" name="name" [(ngModel)]="name" placeholder="Enter something !"/>
+ <input type="text" name="name" [value]="ee" (onkeydown)="add" placeholder="Enter something !"/>
+ <p>
+   {{ee}}
+ </p>
   <p>
   I dont know if this is really working! {{bro}} You are typing this  -> {{name}}
 </p>
